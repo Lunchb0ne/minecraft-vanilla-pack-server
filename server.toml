@@ -1,0 +1,102 @@
+name = "minecraft-vanilla-pack-server"
+mc_version = "1.21.5"
+
+[jar]
+type = "fabric"
+loader = "0.16.10"
+installer = "latest"
+
+[variables]
+SERVER_PORT = "25565"
+
+[launcher]
+eula_args = true
+nogui = true
+
+[markdown]
+files = ["README.md"]
+auto_update = false
+
+[options]
+success_line = ""
+stop_command = ""
+
+[[mods]]
+type = "modrinth"
+id = "g96Z4WVZ"
+version = "EPTfY6pQ"
+
+[[mods]]
+type = "modrinth"
+id = "5ZwdcRci"
+version = "2v1FetLC"
+
+[[mods]]
+type = "modrinth"
+id = "VSNURh3q"
+version = "Wh5CxZTp"
+
+[[mods]]
+type = "modrinth"
+id = "9s6osm5g"
+version = "qA00xo1O"
+
+[[mods]]
+type = "modrinth"
+id = "LQ3K71Q1"
+version = "KyR4NPOX"
+
+[[mods]]
+type = "modrinth"
+id = "NNAgCjsB"
+version = "29GV7fju"
+
+[[mods]]
+type = "modrinth"
+id = "P7dR8mSH"
+version = "rYSz5dRU"
+
+[[mods]]
+type = "modrinth"
+id = "uXXizFIs"
+version = "CtMpt7Jr"
+
+[[mods]]
+type = "modrinth"
+id = "fQEb0iXm"
+version = "neW85eWt"
+
+[[mods]]
+type = "modrinth"
+id = "gvQqBUqZ"
+version = "nhc57Td2"
+
+[[mods]]
+type = "modrinth"
+id = "4WWQxlQP"
+version = "whVgWjOT"
+
+[[mods]]
+type = "modrinth"
+id = "AANobbMI"
+version = "fVbw1C7i"
+
+[[mods]]
+type = "modrinth"
+id = "vSEH1ERy"
+version = "HV6EY0h3"
+
+[[mods]]
+type = "modrinth"
+id = "wnEe9KBa"
+version = "S6IwIw0D"
+
+[[mods]]
+type = "modrinth"
+id = "1eAoo2KR"
+version = "5yBEzonb"
+
+[[mods]]
+type = "modrinth"
+id = "WwbubTsV"
+version = "KMOzdYko"
