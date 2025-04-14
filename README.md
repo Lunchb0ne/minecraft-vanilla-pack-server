@@ -31,4 +31,6 @@
 | [Very Many Players (Fabric)](https://modrinth.com/mod/vmp-fabric)                   | A Fabric mod designed to improve server performance at high playercounts.                                                            | S6IwIw0D |
 | [YetAnotherConfigLib (YACL)](https://modrinth.com/mod/yacl)                         | A builder-based configuration library for Minecraft.                                                                                 | 5yBEzonb |
 | [Your Options Shall Be Respected (YOSBR)](https://modrinth.com/mod/yosbr)           | Your options shall be respected.                                                                                                     | KMOzdYko |
+| [spark](https://modrinth.com/mod/spark)                                             | spark is a performance profiler for Minecraft clients, servers and proxies.                                                          | NURCAL12 |
+| [Distant Horizons](https://modrinth.com/mod/distanthorizons)                        | See farther without turning your game into a slide show                                                                              | Mt9bDAs6 |
 <!--end:mcman-addons-->
