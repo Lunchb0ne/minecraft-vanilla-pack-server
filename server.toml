@@ -7,8 +7,8 @@ loader = "0.16.10"
 installer = "latest"
 
 [variables]
-MOTD = "There §2§oWILL§r be bugs!!"
 SERVER_PORT = "25565"
+MOTD = "There §2§oWILL§r be bugs!!"
 
 [launcher]
 eula_args = true
@@ -128,3 +128,8 @@ version = "NURCAL12"
 type = "modrinth"
 id = "distanthorizons"
 version = "Mt9bDAs6"
+
+[[mods]]
+type = "modrinth"
+id = "jline4mcdsrv"
+version = "QYNpu9bc"

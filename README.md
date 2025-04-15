@@ -33,4 +33,5 @@
 | [Your Options Shall Be Respected (YOSBR)](https://modrinth.com/mod/yosbr)           | Your options shall be respected.                                                                                                     | KMOzdYko |
 | [spark](https://modrinth.com/mod/spark)                                             | spark is a performance profiler for Minecraft clients, servers and proxies.                                                          | NURCAL12 |
 | [Distant Horizons](https://modrinth.com/mod/distanthorizons)                        | See farther without turning your game into a slide show                                                                              | Mt9bDAs6 |
+| [JLine for Dedicated Server](https://modrinth.com/mod/jline4mcdsrv)                 | A server side mod to enable command history, auto completion and syntax highlighting on the server console                           | QYNpu9bc |
 <!--end:mcman-addons-->
