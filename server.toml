@@ -41,17 +41,17 @@ version = "pyubmJ41"
 
 [[mods]]
 type = "modrinth"
-id = "g96Z4WVZ"
+id = "badoptimizations"
 version = "EPTfY6pQ"
 
 [[mods]]
 type = "modrinth"
 id = "5ZwdcRci"
-version = "2v1FetLC"
+version = "DjnwJdjY"
 
 [[mods]]
 type = "modrinth"
-id = "VSNURh3q"
+id = "c2me-fabric"
 version = "Wh5CxZTp"
 
 [[mods]]
@@ -62,7 +62,7 @@ version = "qA00xo1O"
 [[mods]]
 type = "modrinth"
 id = "LQ3K71Q1"
-version = "KyR4NPOX"
+version = "plAPgk28"
 
 [[mods]]
 type = "modrinth"
@@ -71,7 +71,7 @@ version = "29GV7fju"
 
 [[mods]]
 type = "modrinth"
-id = "P7dR8mSH"
+id = "fabric-api"
 version = "rYSz5dRU"
 
 [[mods]]
@@ -87,17 +87,17 @@ version = "neW85eWt"
 [[mods]]
 type = "modrinth"
 id = "gvQqBUqZ"
-version = "nhc57Td2"
+version = "VWYoZjBF"
 
 [[mods]]
 type = "modrinth"
 id = "4WWQxlQP"
-version = "whVgWjOT"
+version = "VK0kd4wj"
 
 [[mods]]
 type = "modrinth"
 id = "AANobbMI"
-version = "fVbw1C7i"
+version = "DA250htH"
 
 [[mods]]
 type = "modrinth"
@@ -107,7 +107,7 @@ version = "HV6EY0h3"
 [[mods]]
 type = "modrinth"
 id = "wnEe9KBa"
-version = "S6IwIw0D"
+version = "EKg6v67t"
 
 [[mods]]
 type = "modrinth"
@@ -133,3 +133,8 @@ version = "Mt9bDAs6"
 type = "modrinth"
 id = "jline4mcdsrv"
 version = "QYNpu9bc"
+
+[[mods]]
+type = "modrinth"
+id = "debugify"
+version = "rfvoZgM1"
