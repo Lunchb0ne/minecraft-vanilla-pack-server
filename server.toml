@@ -46,7 +46,7 @@ version = "EPTfY6pQ"
 
 [[mods]]
 type = "modrinth"
-id = "5ZwdcRci"
+id = "immediatelyfast"
 version = "DjnwJdjY"
 
 [[mods]]
@@ -56,17 +56,17 @@ version = "Wh5CxZTp"
 
 [[mods]]
 type = "modrinth"
-id = "9s6osm5g"
+id = "cloth-config"
 version = "qA00xo1O"
 
 [[mods]]
 type = "modrinth"
-id = "LQ3K71Q1"
+id = "dynamic-fps"
 version = "plAPgk28"
 
 [[mods]]
 type = "modrinth"
-id = "NNAgCjsB"
+id = "entityculling"
 version = "29GV7fju"
 
 [[mods]]
@@ -76,47 +76,47 @@ version = "rYSz5dRU"
 
 [[mods]]
 type = "modrinth"
-id = "uXXizFIs"
+id = "ferrite-core"
 version = "CtMpt7Jr"
 
 [[mods]]
 type = "modrinth"
-id = "fQEb0iXm"
+id = "krypton"
 version = "neW85eWt"
 
 [[mods]]
 type = "modrinth"
-id = "gvQqBUqZ"
+id = "lithium"
 version = "VWYoZjBF"
 
 [[mods]]
 type = "modrinth"
-id = "4WWQxlQP"
+id = "servercore"
 version = "VK0kd4wj"
 
 [[mods]]
 type = "modrinth"
-id = "AANobbMI"
+id = "sodium"
 version = "DA250htH"
 
 [[mods]]
 type = "modrinth"
-id = "vSEH1ERy"
-version = "HV6EY0h3"
+id = "threadtweak"
+version = "IvtlnXcT"
 
 [[mods]]
 type = "modrinth"
-id = "wnEe9KBa"
+id = "vmp-fabric"
 version = "EKg6v67t"
 
 [[mods]]
 type = "modrinth"
-id = "1eAoo2KR"
+id = "yacl"
 version = "5yBEzonb"
 
 [[mods]]
 type = "modrinth"
-id = "WwbubTsV"
+id = "yosbr"
 version = "KMOzdYko"
 
 [[mods]]
