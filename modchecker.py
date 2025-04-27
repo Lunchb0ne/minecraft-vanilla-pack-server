@@ -14,9 +14,8 @@ Checks and updates Minecraft mod versions and IDs using the Modrinth API.
 """
 
 import sys
-import re
 import argparse
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional, Any, Tuple, Callable
 
 import requests
 import tomli
@@ -28,6 +27,14 @@ init()
 # --- Constants ---
 MODRINTH_API = "https://api.modrinth.com/v2"
 USER_AGENT = "github/LunchChecker/1.0.0 (Minecraft Mod Version Checker)"
+
+# Global debug flag
+DEBUG = False
+
+def debug_log(message: str) -> None:
+    """Print a debug message if debug mode is enabled."""
+    if DEBUG:
+        print(f"DEBUG: {message}")
 
 
 # --- Utility Classes ---
@@ -45,32 +52,158 @@ class TomlHandler:
             sys.exit(1)
 
     @staticmethod
-    def update_file_content(file_path: str, pattern: str, replacement: str) -> bool:
-        """Update file content using regex pattern matching."""
+    def _read_file_lines(file_path: str) -> Optional[List[str]]:
+        """Helper to read file lines with error handling."""
         try:
-            with open(file_path, "r") as f:
-                content = f.read()
-            new_content = re.sub(pattern, replacement, content)
-            if new_content != content:
-                with open(file_path, "w") as f:
-                    f.write(new_content)
-                return True
-            return False
+            with open(file_path, "r", encoding="utf-8") as f:
+                return f.readlines()
         except IOError as e:
-            print(f"Error updating {file_path}: {e}", file=sys.stderr)
+            print(f"Error reading {file_path}: {e}", file=sys.stderr)
+            return None
+
+    @staticmethod
+    def _write_file_lines(file_path: str, lines: List[str]) -> bool:
+        """Helper to write file lines with error handling."""
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.writelines(lines)
+            return True
+        except IOError as e:
+            print(f"Error writing {file_path}: {e}", file=sys.stderr)
             return False
+
+    def _update_toml_field(
+        self,
+        file_path: str,
+        find_predicate: Callable[[str], bool],
+        update_predicate: Callable[[str], bool],
+        update_func: Callable[[str], str],
+    ) -> bool:
+        """Generic method to find and update fields in TOML files.
+
+        Args:
+            file_path: Path to TOML file
+            find_predicate: Function that returns True when the target section is found
+            update_predicate: Function that returns True when the line to update is found
+            update_func: Function that receives the line and returns the updated line
+        """
+        lines = self._read_file_lines(file_path)
+        if not lines:
+            debug_log(f"Failed to read file lines from {file_path}")
+            return False
+
+        found_target = False
+        updated = False
+        debug_counter = 0
+
+        for i, line in enumerate(lines):
+            line_stripped = line.strip()
+
+            # Debug print for target lines
+            if debug_counter < 20:  # Limit debug output
+                if find_predicate(line_stripped):
+                    debug_log(f"Found target at line {i}: '{line_stripped}'")
+                if update_predicate(line_stripped):
+                    debug_log(f"Found update candidate at line {i}: '{line_stripped}'")
+                debug_counter += 1
+
+            if find_predicate(line_stripped):
+                found_target = True
+                debug_log(f"Set found_target = True at line {i}")
+                continue
+
+            if found_target and update_predicate(line_stripped):
+                old_line = lines[i]
+                lines[i] = update_func(line)
+                updated = True
+                debug_log(f"Updated line {i} from '{old_line.strip()}' to '{lines[i].strip()}'")
+                break
+
+            # Reset search when we hit a section boundary
+            if found_target and line_stripped.startswith("[["):
+                debug_log(f"Reset found_target at line {i} due to section boundary: '{line_stripped}'")
+                found_target = False
+
+        if not updated:
+            debug_log("No matching line was found to update")
+
+        result = updated and self._write_file_lines(file_path, lines)
+        debug_log(f"Final result of update operation: {result}")
+        return result
 
     def update_version(self, file_path: str, mod_id: str, new_version: str) -> bool:
         """Update a mod's version in the TOML file."""
-        pattern = f'(id = "{mod_id}"[^\n]*\nversion = )"([^"]+)"'
-        replacement = f'\\1"{new_version}"'
-        return self.update_file_content(file_path, pattern, replacement)
+        lines = self._read_file_lines(file_path)
+        if not lines:
+            debug_log(f"Failed to read file lines from {file_path}")
+            return False
+
+        updated = False
+        in_mod_section = False
+
+        debug_log(f"Looking for mod with ID '{mod_id}' to update version to {new_version}")
+
+        for i, line in enumerate(lines):
+            line_stripped = line.strip()
+
+            # Check for the start of a mod section
+            if line_stripped == "[[mods]]":
+                in_mod_section = True
+                debug_log(f"Found mod section at line {i}")
+                continue
+
+            # If we're in a mod section, look for the correct mod ID
+            if in_mod_section and line_stripped == f'id = "{mod_id}"':
+                debug_log(f"Found target mod with ID '{mod_id}' at line {i}")
+
+                # Look for the version line in the next few lines
+                for j in range(i + 1, min(i + 5, len(lines))):  # Check next few lines
+                    version_line = lines[j].strip()
+                    if version_line.startswith("version = "):
+                        # Found the version line, update it
+                        old_line = lines[j]
+                        indent = lines[j][: lines[j].index("version")]
+                        lines[j] = f'{indent}version = "{new_version}"\n'
+                        updated = True
+                        debug_log(f"Updated version at line {j} from '{old_line.strip()}' to '{lines[j].strip()}'")
+                        break
+
+                # If we found the right mod ID, no need to continue checking other mods
+                break
+
+            # Reset when we hit a new section (but not at the initial [[mods]] line)
+            if in_mod_section and i > 0 and (line_stripped.startswith("[[") and line_stripped != "[[mods]]"):
+                in_mod_section = False
+                debug_log(f"End of mod section at line {i}")
+
+        if not updated:
+            debug_log(f"Failed to find version line for mod '{mod_id}'")
+
+        # Only write to the file if we actually made a change
+        if updated:
+            result = self._write_file_lines(file_path, lines)
+            debug_log(f"File write result: {result}")
+            return result
+        return False
 
     def update_id_to_slug(self, file_path: str, mod_id: str, slug: str) -> bool:
-        """Update a mod's ID to its readable slug in the TOML file."""
-        pattern = f'id = "{mod_id}"'
-        replacement = f'id = "{slug}"'
-        return self.update_file_content(file_path, pattern, replacement)
+        """Update a mod's ID to its slug in the TOML file."""
+        lines = self._read_file_lines(file_path)
+        if not lines:
+            return False
+
+        updated = False
+
+        for i, line in enumerate(lines):
+            line_stripped = line.strip()
+
+            if line_stripped == f'id = "{mod_id}"':
+                indent = line[: line.index("id")]
+                lines[i] = f'{indent}id = "{slug}"\n'
+                updated = True
+                break
+
+        return updated and self._write_file_lines(file_path, lines)
 
 
 class ModrinthClient:
@@ -315,9 +448,21 @@ class ModManager:
         """Perform the update if user confirms. Returns 1 if updated, 0 otherwise."""
         if self.prompt_yes_no(f"Do you want to update this mod to version {latest_version['version_number']}?"):
             print(f"Updating version from {current_version_id} to {color}{latest_version['id']}{Style.RESET_ALL}")
-            if self.toml_handler.update_version(self.config_path, mod_id, latest_version["id"]):
+
+            # Get mod info to find the slug
+            mod_info = self.client.get_mod_info(mod_id)
+            if not mod_info or "slug" not in mod_info:
+                print(f"Error: Could not find slug for mod {mod_id}")
+                return 0
+
+            mod_slug = mod_info["slug"]
+            debug_log(f"Using slug '{mod_slug}' to update mod with ID '{mod_id}'")
+
+            if self.toml_handler.update_version(self.config_path, mod_slug, latest_version["id"]):
                 print(f"Successfully updated {mod_title}!")
                 return 1
+            else:
+                print(f"Failed to update version for {mod_title}")
         else:
             print("Skipping version update.")
         return 0
@@ -416,12 +561,19 @@ def parse_args() -> argparse.Namespace:
         default="server.toml",
         help="Server configuration file path (default: server.toml)",
     )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable debug mode for detailed output",
+    )
     return parser.parse_args()
 
 
 def main():
     """Main entry point for the script."""
     args = parse_args()
+    global DEBUG
+    DEBUG = args.debug
     file_path = args.file
 
     # Initialize and load config
