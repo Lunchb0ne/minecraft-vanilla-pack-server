@@ -8,6 +8,8 @@ installer = "latest"
 
 [variables]
 MOTD = "There §2§oWILL§r be bugs!!"
+SERVER_NAME = "Lunch's Vanilla Server"
+DIFFICULTY = "hard"
 SERVER_PORT = "25565"
 
 [launcher]
@@ -42,7 +44,7 @@ version = "pyubmJ41"
 [[mods]]
 type = "modrinth"
 id = "badoptimizations"
-version = "EPTfY6pQ"
+version = "flRkZbyf"
 
 [[mods]]
 type = "modrinth"
@@ -52,7 +54,7 @@ version = "DjnwJdjY"
 [[mods]]
 type = "modrinth"
 id = "c2me-fabric"
-version = "eL3rprSq"
+version = "aEnmtg8n"
 
 [[mods]]
 type = "modrinth"
@@ -72,7 +74,7 @@ version = "29GV7fju"
 [[mods]]
 type = "modrinth"
 id = "fabric-api"
-version = "hBmLTbVB"
+version = "7KiXkbYC"
 
 [[mods]]
 type = "modrinth"
@@ -143,3 +145,33 @@ version = "rfvoZgM1"
 type = "modrinth"
 id = "scalablelux"
 version = "UueJNiJn"
+
+[[mods]]
+type = "modrinth"
+id = "squaremap"
+version = "L1i3PIWB"
+
+[[mods]]
+type = "modrinth"
+id = "creeper-healing"
+version = "22gyCPT9"
+
+[[mods]]
+type = "modrinth"
+id = "monkey-utils"
+version = "psAnQWIp"
+
+[[mods]]
+type = "modrinth"
+id = "fabric-language-kotlin"
+version = "E4WyjCxJ"
+
+[[mods]]
+type = "modrinth"
+id = "easywhitelist"
+version = "4ndHE533"
+
+[[mods]]
+type = "modrinth"
+id = "fastback"
+version = "7mTnBi2q"

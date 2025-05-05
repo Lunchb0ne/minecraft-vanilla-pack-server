@@ -15,9 +15,9 @@
 <!--start:mcman-addons-->
 | Name                                                                                | Description                                                                                                                          | Version  |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| [BadOptimizations](https://modrinth.com/mod/badoptimizations)                       | Optimization mod that focuses on things other than rendering                                                                         | EPTfY6pQ |
+| [BadOptimizations](https://modrinth.com/mod/badoptimizations)                       | Optimization mod that focuses on things other than rendering                                                                         | flRkZbyf |
 | [ImmediatelyFast](https://modrinth.com/mod/immediatelyfast)                         | Speed up immediate mode rendering in Minecraft                                                                                       | DjnwJdjY |
-| [Concurrent Chunk Management Engine (Fabric)](https://modrinth.com/mod/c2me-fabric) | A Fabric mod designed to improve the chunk performance of Minecraft.                                                                 | VEjpHAOG |
+| [Concurrent Chunk Management Engine (Fabric)](https://modrinth.com/mod/c2me-fabric) | A Fabric mod designed to improve the chunk performance of Minecraft.                                                                 | aEnmtg8n |
 | [Cloth Config API](https://modrinth.com/mod/cloth-config)                           | Configuration Library for Minecraft Mods                                                                                             | qA00xo1O |
 | [Dynamic FPS](https://modrinth.com/mod/dynamic-fps)                                 | Reduce resource usage while Minecraft is in the background, idle, or on battery.                                                     | plAPgk28 |
 | [Entity Culling](https://modrinth.com/mod/entityculling)                            | Using async path-tracing to hide Block-/Entities that are not visible                                                                | 29GV7fju |
@@ -36,4 +36,10 @@
 | [JLine for Dedicated Server](https://modrinth.com/mod/jline4mcdsrv)                 | A server side mod to enable command history, auto completion and syntax highlighting on the server console                           | QYNpu9bc |
 | [Debugify](https://modrinth.com/mod/debugify)                                       | Fixes Minecraft bugs found on the bug tracker                                                                                        | rfvoZgM1 |
 | [ScalableLux](https://modrinth.com/mod/scalablelux)                                 | A Fabric mod based on Starlight that improves the performance of light updates in Minecraft.                                         | UueJNiJn |
+| [squaremap](https://modrinth.com/mod/squaremap)                                     | squaremap is a minimalistic & lightweight world map viewer for Minecraft servers, using the vanilla map rendering style              | L1i3PIWB |
+| [Creeper Healing](https://modrinth.com/mod/creeper-healing)                         | A server side, customizable Fabric mod to automatically and naturally heal Creeper explosions (and other kinds of explosions!).      | 22gyCPT9 |
+| [Monkey Utils](https://modrinth.com/mod/monkey-utils)                               | A declarative Kotlin focused Minecraft utility library for commonly used features of my mods.                                        | psAnQWIp |
+| [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin)           | This is a mod that enables usage of the Kotlin programming language for Fabric mods.                                                 | E4WyjCxJ |
+| [EasyWhitelist](https://modrinth.com/mod/easywhitelist)                             | Name-based whitelist for Fabric servers                                                                                              | 4ndHE533 |
+| [Fast Backups](https://modrinth.com/mod/fastback)                                   | Fast, incremental world backups powered by Git.                                                                                      | 7mTnBi2q |
 <!--end:mcman-addons-->
